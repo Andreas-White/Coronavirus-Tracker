@@ -6,6 +6,8 @@ public class LocationStats {
     private String country;
     private int latestTotalCases;
     private int diffFromPreviousDay;
+    private int totalDeaths;
+    private int totalRecovered;
 
     public int getDiffFromPreviousDay() {
         return diffFromPreviousDay;
@@ -39,12 +41,4 @@ public class LocationStats {
         this.latestTotalCases = latestTotalCases;
     }
 
-    @Override
-    public String toString() {
-        return "LocationStats{" +
-                "state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", latestTotalCases=" + latestTotalCases +
-                '}';
-    }
 }

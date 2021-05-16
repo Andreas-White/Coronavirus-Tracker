@@ -40,11 +40,8 @@ public class CoronaVirusDataService {
             List<LocationStats> newStatsList = new ArrayList<>();
 
             // Making a http request to fetch the data from the link
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(CVCASES_DATA_URL)).build();
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            StringReader in = new StringReader(response.body());
+            StringReader in = new StringReader(returnResponse(CVCASES_DATA_URL).body());
             // Parsing the CSV file to Strings, in order to extract the wanted data
             Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
             for (CSVRecord record : records) {
@@ -61,8 +58,22 @@ public class CoronaVirusDataService {
             }
             this.statsList = newStatsList;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public HttpResponse<String> returnResponse(String url) {
+        HttpResponse<String> response = null;
+        try {
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
+        return response;
     }
 }
