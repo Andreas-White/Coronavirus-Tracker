@@ -17,13 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CoronaVirusDataServices {
+public class CoronaVirusDataService {
 
     private static String CVCASES_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
     private static String CVDEATHS_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv";
     private static String CVRECOVERED_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
 
     private List<LocationStats> statsList = new ArrayList<>();
+
+    public List<LocationStats> getStatsList() {
+        return statsList;
+    }
+
     @PostConstruct  // is used on a method that needs to be executed after dependency injection is done to
                     // perform any initialization. This method MUST be invoked before the class is put into service
     @Scheduled(cron = " 0 0 0/6 * * *") // Enables running this method every second, so the data are frequently refreshed.
@@ -47,7 +52,11 @@ public class CoronaVirusDataServices {
                 locationStats.setState(record.get("Province/State"));
                 locationStats.setCountry(record.get("Country/Region"));
                 locationStats.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));
-                System.out.println(locationStats.toString());
+
+                int latestCases = Integer.parseInt(record.get(record.size() - 1));
+                int previousDayCases = Integer.parseInt(record.get(record.size() - 2));
+                locationStats.setDiffFromPreviousDay(latestCases - previousDayCases);
+
                 newStatsList.add(locationStats);
             }
             this.statsList = newStatsList;
