@@ -19,16 +19,34 @@ public class HomeController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    public String home(Model model) {
-        List<LocationStats> statsList = service.getStatsList();
+    @GetMapping("/cases")
+    public String getConfirmedCases(Model model) {
+        List<LocationStats> statsList = service.getCasesList();
         int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
         model.addAttribute("locationStats", statsList);
         model.addAttribute("totalReportedCases",totalCases);
         return "confirmedCases";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/deaths")
+    public String getDeaths(Model model) {
+        List<LocationStats> statsList = service.getDeathList();
+        int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
+        model.addAttribute("locationStats", statsList);
+        model.addAttribute("totalReportedCases",totalCases);
+        return "confirmedDeaths";
+    }
+
+    @GetMapping("/recovered")
+    public String getRecovered(Model model) {
+        List<LocationStats> statsList = service.getRecoveredList();
+        int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
+        model.addAttribute("locationStats", statsList);
+        model.addAttribute("totalReportedCases",totalCases);
+        return "recoveredCases";
+    }
+
+    @GetMapping("/")
     public String getHome() {
         return "home";
     }
