@@ -39,8 +39,6 @@ public class CoronaVirusDataService {
             // Created a new list for concurrency errors
             List<LocationStats> newStatsList = new ArrayList<>();
 
-            // Making a http request to fetch the data from the link
-
             StringReader in = new StringReader(returnResponse(CVCASES_DATA_URL).body());
             // Parsing the CSV file to Strings, in order to extract the wanted data
             Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
@@ -63,6 +61,11 @@ public class CoronaVirusDataService {
         }
     }
 
+    /**
+     * Makes an http request to fetch the data from the link
+     * @param url the url of the data source
+     * @return a String with the data
+     */
     public HttpResponse<String> returnResponse(String url) {
         HttpResponse<String> response = null;
         try {

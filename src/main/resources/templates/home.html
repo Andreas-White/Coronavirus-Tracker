@@ -5,36 +5,24 @@
 <head>
     <title>Coronavirus Tracker App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
 <div class="container">
 
-<h1>Coronavirus Tracker</h1>
-<p>This site presents all the current number of confirmed cases, deaths and recovered related to corona virus</p>
+    <h1>Coronavirus Tracker</h1>
+    <p>This site presents all the current number of confirmed cases, deaths and recovered related to corona virus</p>
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4" th:text="${totalReportedCases}"></h1>
-        <p class="lead">Total cases</p>
-    </div>
-</div>
-
-<table class="table">
-    <tr>
-        <th>State/Province</th>
-        <th>Country/Region</th>
-        <th>Total confirmed cases</th>
-        <th>New daily cases</th>
-    </tr>
-    <tr th:each="locationStat : ${locationStats}">
-        <td th:text="${locationStat.state}"></td>
-        <td th:text="${locationStat.country}"></td>
-        <td th:text="${locationStat.latestTotalCases}">0</td>
-        <td th:text="${locationStat.diffFromPreviousDay}">0</td>
-    </tr>
-</table>
+    <p>
+        <a href="/" th:href="@{/}" class="btn btn-warning" role="button" data-bs-toggle="button">Confirmed Cases</a>
+    </p>
+    <p>
+        <a href="/" th:href="@{/}" class="btn btn-danger" role="button" data-bs-toggle="button">Deaths</a>
+    </p>
+    <p>
+        <a href="/" th:href="@{/}" class="btn btn-primary" role="button" data-bs-toggle="button">Recovered</a>
+    </p>
 </div>
 
 </body>

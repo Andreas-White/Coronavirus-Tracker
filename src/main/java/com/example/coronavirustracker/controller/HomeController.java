@@ -25,6 +25,11 @@ public class HomeController {
         int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
         model.addAttribute("locationStats", statsList);
         model.addAttribute("totalReportedCases",totalCases);
+        return "confirmedCases";
+    }
+
+    @GetMapping("/home")
+    public String getHome() {
         return "home";
     }
 }
