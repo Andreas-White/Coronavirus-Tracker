@@ -14,7 +14,7 @@
     <name>coronavirus-tracker</name>
     <description>A coronavirus tracker app</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>15</java.version>
     </properties>
     <dependencies>
         <dependency>
