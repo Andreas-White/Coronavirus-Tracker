@@ -14,15 +14,41 @@
     <h1>Coronavirus Tracker</h1>
     <p>This site presents all the current number of confirmed cases, deaths and recovered related to corona virus</p>
 
-    <p>
-        <a href="/cases" th:href="@{/cases}" class="btn btn-warning" role="button" data-bs-toggle="button">Confirmed Cases</a>
+    <div class="container px-4">
+        <div class="row gx-14">
+            <div class="col">
+                <p>
+                    <a href="/cases" th:href="@{/cases}" class="btn btn-warning" role="button" data-bs-toggle="button">Confirmed Cases</a>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <a href="/deaths" th:href="@{/deaths}" class="btn btn-danger" role="button" data-bs-toggle="button">Deaths</a>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <a href="/recovered" th:href="@{/recovered}" class="btn btn-primary" role="button" data-bs-toggle="button">Recovered</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <p class="h4">Protect yourself and others from COVID-19</p>
+    <p class="h6">If COVID-19 is spreading in your community, stay safe by taking some simple precautions, such as
+        physical distancing, wearing a mask, keeping rooms well ventilated, avoiding crowds, cleaning your hands, and
+        coughing into a bent elbow or tissue. Check local advice where you live and work. Do it all!
     </p>
-    <p>
-        <a href="/deaths" th:href="@{/deaths}" class="btn btn-danger" role="button" data-bs-toggle="button">Deaths</a>
-    </p>
-    <p>
-        <a href="/recovered" th:href="@{/recovered}" class="btn btn-primary" role="button" data-bs-toggle="button">Recovered</a>
-    </p>
+
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/who-3-factors-poster.tmb-479v.jpg?sfvrsn=4f685207_1" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/visiting-family.tmb-479v.jpg?sfvrsn=e4652390_7" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/person-sick-in-your-household-what-to-do.tmb-479v.jpg?sfvrsn=39d1287_8" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/person-sick-in-your-household-prepare.tmb-479v.jpg?sfvrsn=6736e6e5_7" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/health-care-facilities_8_1-01.tmb-479v.png?sfvrsn=823c9ad5_7" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/grocery-shopping.tmb-479v.jpg?sfvrsn=57603db5_7" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/dont-put-off-medical-appointments.tmb-479v.jpg?sfvrsn=545773bb_7" class="img-fluid" alt="...">
+    <img src="https://www.who.int/images/default-source/health-topics/coronavirus/covid19-infographic-symptoms-final.tmb-479v.png?sfvrsn=57850cbc_1" class="img-fluid" alt="...">
+
 </div>
 
 </body>

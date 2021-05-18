@@ -33,7 +33,7 @@ public class HomeController {
         List<LocationStats> statsList = service.getDeathList();
         int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
         model.addAttribute("locationStats", statsList);
-        model.addAttribute("totalReportedCases",totalCases);
+        model.addAttribute("totalDeaths",totalCases);
         return "confirmedDeaths";
     }
 
@@ -42,7 +42,7 @@ public class HomeController {
         List<LocationStats> statsList = service.getRecoveredList();
         int totalCases = statsList.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
         model.addAttribute("locationStats", statsList);
-        model.addAttribute("totalReportedCases",totalCases);
+        model.addAttribute("totalRecovered",totalCases);
         return "recoveredCases";
     }
 
